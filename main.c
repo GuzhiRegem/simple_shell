@@ -1,6 +1,11 @@
 #include "shell.h"
 #include <signal.h>
 
+int get_inp(char **errormsg);
+void prompt(int n);
+int command(char **arguments, char **env, char **errormsg);
+
+
 /**
  *main - Entry point
  *@argc: stores number of command-line arguments
@@ -9,12 +14,6 @@
  *
  *Return: Always 0
  */
-
-
-
-int get_inp(char **errormsg);
-void prompt(int n);
-int command(char **arguments, char **env, char **errormsg);
 int main(int argc, char **argv, char **env)
 {
 	int error = 1;

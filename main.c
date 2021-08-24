@@ -116,6 +116,13 @@ int command(char **arguments, char **env, char **errormsg)
 	out += mystrcpy(errormsg, ": not found", out);
 	return (2);
 }
+
+/**
+ *prompt - function that will print the prompt
+ *@n: size
+ *
+ *Return: nothing
+ */
 void prompt(int n)
 {
 	char cwd[201];

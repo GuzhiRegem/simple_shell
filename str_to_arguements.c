@@ -93,28 +93,28 @@ void set_col(int c)
 	switch (c)
 	{
 	case 0:
-		write(1, "\e[0;37m", 7);
+		write(1, "\033[0;37m", 7);
 		break;
 	case 1:
-		write(1, "\e[0;33m", 7);
+		write(1, "\033[0;33m", 7);
 		break;
 	case 2:
-		write(1, "\e[0;32m", 7);
+		write(1, "\033[0;32m", 7);
 		break;
 	case 3:
-		write(1, "\e[0;31m", 7);
+		write(1, "\033[0;31m", 7);
 		break;
 	case 4:
-		write(1, "\e[46;1m", 7);
+		write(1, "\033[46;1m", 7);
 		break;
 	}
 }
-int mystrcpy(char **dest, const char *src, int offs)
+int mystrcpy(char *dest, const char *src, int offs)
 {
 	int i;
 	char *tmp;
 
-	tmp = *dest + offs;
+	tmp = dest + offs;
 	for (i = 0; src[i] || (i >= 1024); i++)
 		tmp[i] = src[i];
 	tmp[i] = 0;

@@ -1,20 +1,19 @@
 #include "shell.h"
 #include <signal.h>
 
-int get_inp(char **errormsg);
+int get_inp(char *errormsg);
 void prompt(int n);
-int command(char **arguments, char **env, char **errormsg);
+int command(char **arguments, char **env, char *errormsg);
 
 
 /**
  *main - Entry point
  *@argc: stores number of command-line arguments
  *@argv: array of character pointers listing all the arguments
- *@env: NULL terminated array of strings.
  *
  *Return: Always 0
  */
-int main(int argc, char **argv, char **env)
+int main(__attribute__ ((unused)) int argc, char **argv)
 {
 	int error = 1;
 	char *errormsg;
@@ -25,7 +24,7 @@ int main(int argc, char **argv, char **env)
 		return (1);
 	while (error != 0)
 	{
-		error = get_inp(&errormsg);
+		error = get_inp(errormsg);
 		if (abs(error) > 1)
 		{
 			printf("%s: ", argv[0]);
@@ -36,13 +35,14 @@ int main(int argc, char **argv, char **env)
 		if (error < 0)
 			error = 0;
 	}
+	free(errormsg);
 	return (0);
 }
-int get_inp(char **errormsg)
+int get_inp(char *errormsg)
 {
 	char *buffer;
 	char **arguments, **times, **semicolons;
-	int i, lines, semic, error, inte, characters, offst;
+	int i, lines, semic, error, inte, characters;
 	size_t buf_size = 1024;
 
 	buffer = malloc(buf_size);
@@ -61,7 +61,13 @@ int get_inp(char **errormsg)
 	}
 	if (buffer[characters - 1] == '\n')
 		buffer[characters - 1] = 0;
+	if (buffer[0] == 0)
+	{
+		free(buffer);
+		return (1);
+	}
 	times = str_to_arguments(buffer, '\n');
+	free(buffer);
 	for (lines = 0; times[lines]; lines++)
 	{
 		semicolons = str_to_arguments(times[lines], ';');
@@ -82,10 +88,12 @@ int get_inp(char **errormsg)
 	free(times);
 	return (inte ? error : (0 - error));
 }
-int command(char **arguments, char **env, char **errormsg)
+int command(char **arguments, char **env, char *errormsg)
 {
 	int i, out;
 
+	if (!arguments[0][0])
+		return (1);
 	i = search_bulit_in(arguments, env, errormsg);
 	if (i != 0)
 		return (i);

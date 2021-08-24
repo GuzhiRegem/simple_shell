@@ -18,7 +18,8 @@ void execute(char *command, char **arguments, char **env)
 	else
 		wait(&exit_status);
 }
-int execute_built_in(int n, char **arguments, char **env, char **errormsg)
+int execute_built_in(int n, char **arguments,
+		     __attribute__ ((unused))char **env, char *errormsg)
 {
 	int i, out;
 
@@ -39,7 +40,7 @@ int execute_built_in(int n, char **arguments, char **env, char **errormsg)
 	}
 	return (1);
 }
-int search_bulit_in(char **arguments, char **env, char **errormsg)
+int search_bulit_in(char **arguments, char **env, char *errormsg)
 {
 	int i;
 	char *commands[] = {"cd",
@@ -56,7 +57,7 @@ int search_bulit_in(char **arguments, char **env, char **errormsg)
 }
 int search_command(char **arguments, char **env)
 {
-	char *path, *command, *first_arg;
+	char *path, *command;
 	struct stat statbuf;
 	char **paths;
 	int i, found = 0, file;

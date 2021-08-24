@@ -119,7 +119,7 @@ int command(char **arguments, char **env, char **errormsg)
 
 /**
  *prompt - function that will print the prompt
- *@n: size
+ *@n: defines interactive mode
  *
  *Return: nothing
  */

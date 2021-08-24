@@ -43,7 +43,7 @@ int main(int argc, char **argv, char **env)
  *get_inp - function that get the input
  *@errormsg: will display an error message
  *
- *Return - a number, the error number
+ *Return: a number, the error number
  */
 
 
@@ -90,6 +90,15 @@ int get_inp(char **errormsg)
 	free(times);
 	return (inte ? error : (0 - error));
 }
+
+/**
+ *command - funtion to parse the input string
+ *@arguments: tokenized commands
+ *@env: NULL terminated array of strings.
+ *@errormsg:  will display an error message
+ *
+ *Return: always an integer
+ */
 int command(char **arguments, char **env, char **errormsg)
 {
 	int i, out;

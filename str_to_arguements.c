@@ -9,10 +9,12 @@
 char **str_to_arguments(char *buffer, char sep)
 {
 	char **out;
-	int i, i2, i3, error = 0, arg_amount = 1;
+	int i, i2, i3, error = 0, arg_amount = 1, offs;
 	char *ptr, *tmp;
 
-	for (i = 0; buffer[i]; i++)
+	for (offs = 0; buffer[offs] == sep; offs++)
+		;
+	for (i = offs; buffer[i]; i++)
 		if (buffer[i] == sep)
 			if (buffer[i + 1] && (buffer[i + 1] != sep))
 				arg_amount++;
@@ -20,7 +22,7 @@ char **str_to_arguments(char *buffer, char sep)
 	if (!out)
 		return (out);
 	out[arg_amount] = NULL;
-	ptr = buffer;
+	ptr = buffer + offs;
 	for (i = 0; i < arg_amount; i++)
 	{
 		while (ptr[0] == sep)

@@ -1,0 +1,14 @@
+#include "shell.h"
+
+int mygetline(char **buffer, size_t *buf_size)
+{
+	int count = 0;
+	int ch;
+	while ((ch != EOF) || (ch != '\n'))
+	{
+		count++;
+		ch = getchar();
+	}
+	read(0, *buffer, count);
+	return (count);
+}

@@ -1,0 +1,36 @@
+#!/bin/bash
+
+red=`tput setaf 1`
+green=`tput setaf 2`
+reset=`tput sgr0`
+
+command="ls
+ls
+ls
+ls"
+
+old=expected
+new=getted
+num=0
+strin=dif
+echo "sending:"
+echo "$command"
+echo "------------"
+echo "EXPECTED:"
+echo "$command" | /bin/sh > $old
+cat $old
+echo "------------"
+echo ""
+echo "------------"
+echo "GET:"
+echo "$command" | ../a.out > $new
+cat $new
+echo "------------"
+echo ""
+cmp --silent $old $new || num=1
+if [ $num == 1 ]; then
+    strin=${red}DIFFERENT${reset}
+else
+    strin=${green}EQUAL${reset}
+fi
+echo --{$strin}--

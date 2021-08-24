@@ -31,16 +31,19 @@ int main(int argc, char **argv, char **env)
 int get_inp(char **errormsg)
 {
 	char *buffer;
-	char **arguments;
-	int i, error, inte;
-	size_t characters, buf_size = 1024;
+	char **arguments, **times, **semicolons;
+	int i, lines, semic, error, inte, characters, offst;
+	size_t buf_size = 1024;
 
 	buffer = malloc(buf_size);
 	if (!buffer)
 		return (-1);
 	inte = isatty(0);
 	prompt(inte);
-	characters = getline(&buffer, &buf_size, stdin);
+	if (inte)
+		characters = getline(&buffer, &buf_size, stdin);
+	else
+		characters = read(0, buffer, buf_size);
 	if (characters == -1)
 	{
 		free(buffer);
@@ -48,14 +51,24 @@ int get_inp(char **errormsg)
 	}
 	if (buffer[characters - 1] == '\n')
 		buffer[characters - 1] = 0;
-	arguments = str_to_arguments(buffer, ' ');
-	free(buffer);
-	if (!arguments)
-		return (-1);
-	error = command(arguments, environ, errormsg);
-	for (i = 0; arguments[i]; i++)
-		free(arguments[i]);
-	free(arguments);
+	times = str_to_arguments(buffer, '\n');
+	for (lines = 0; times[lines]; lines++)
+	{
+		semicolons = str_to_arguments(times[lines], ';');
+		for (semic = 0; semicolons[semic]; semic++)
+		{
+			arguments = str_to_arguments(semicolons[semic], ' ');
+			free(semicolons[semic]);
+			if (!arguments)
+				return (-1);
+			error = command(arguments, environ, errormsg);
+			for (i = 0; arguments[i]; i++)
+				free(arguments[i]);
+			free(arguments);
+		}
+		free(semicolons);
+	}
+	free(times);
 	return (inte ? error : (0 - error));
 }
 int command(char **arguments, char **env, char **errormsg)

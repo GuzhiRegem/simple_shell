@@ -13,6 +13,7 @@ extern char **environ;
 
 #define abs(x) ((x > 0) ?  (x) : (x * -1))
 
+int mygetline(char **buffer, size_t *buf_size);
 void set_col(int c);
 char *get_env(char *str);
 char **str_to_arguments(char *buffer, char sep);

@@ -38,6 +38,15 @@ int main(int argc, char **argv, char **env)
 	}
 	return (0);
 }
+
+/**
+ *get_inp - function that get the input
+ *@errormsg: will display an error message
+ *
+ *Return - a number, the error number
+ */
+
+
 int get_inp(char **errormsg)
 {
 	char *buffer;

@@ -65,6 +65,7 @@ int get_inp(char **errormsg)
 	for (lines = 0; times[lines]; lines++)
 	{
 		semicolons = str_to_arguments(times[lines], ';');
+		free(times[lines]);
 		for (semic = 0; semicolons[semic]; semic++)
 		{
 			arguments = str_to_arguments(semicolons[semic], ' ');

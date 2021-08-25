@@ -1,0 +1,76 @@
+.\"Pagina de manual.
+.TH "Simple Shell" "1" "August 26 2021" "Version Alpha- HolbertonSchool"
+.hy
+.SH # NAME
+	**** Simple Shell ****
+
+.SH #SYNOPSIS
+.PP
+	Non-Interactive Mode : echo "[command]" | ./shs
+
+	Interactive Mode :[$] [Arg0] [Arg1] [Arg2]
+
+.SH #DESCRIPTION
+
+.SH Simple_shell is a computer program that presents a command line interface which allows you to control your computer using commands entered with a keyboard instead of controlling graphical user interfaces (GUIs) with a mouse / keyboard combination.
+---------------
+
+.SH #OPTION
+-c string
+If the -c option is present, then commands are read from string. If there are arguments after the string, they are assigned to the positional parameters, starting with $0.
+
+-i
+
+If the -i option is present, the shell is interactive.
+
+-l
+
+Make bash act as if it had been invoked as a login shell (see INVOCATION below).
+
+-r
+
+If the -r option is present, the shell becomes restricted (see RESTRICTED SHELL below).
+
+-s
+
+If the -s option is present, or if no arguments remain after option processing, then commands are read from the standard input. This option allows the positional parameters to be set when invoking an interactive shell.
+
+-D
+
+A list of all double-quoted strings preceded by $ is printed on the standard output. These are the strings that are subject to language translation when the current locale is not C or POSIX. This implies the -n option; no commands will be executed.
+
+.SH #OPERATORS
+ The shell reads input in terms of lines from a file and breaks it up into words at
+      whitespace (blanks and tabs), and at certain sequences of characters that are special
+           to the shell called “operators”.  There are two types of operators: control operators
+	        and redirection operators (their meaning is discussed later).  Following is a list of
+		     operators:
+
+           Control operators:
+	                    & && ( ) ; ;; | || <newline>
+
+           Redirection operators:
+	                    < > >| << >> <& >& <<- <>
+
+
+.SH #BUILT_IN
+		[0] cd
+		[1] exit
+
+.SH #EXECUTION
+	There are two different ways of executing :
+
+	Interactive Mode ()
+	Non Interactive Mode ()
+
+.SH #AUTHORS
+-Franco Bueno
+-Sebastian Moreira
+-Joaquin Pintaluba
+.SH #CONTACT
+.SH Sebastian Moreira : https://github.com/GuzhiRegem
+.SH --------------------------------------------------
+.SH Franco Bueno : https://github.com/FrancoBuenoHolberton
+.SH --------------------------------------------------
+.SH Joaquin Pintaluba : https://github.com/jopinta
+.SH --------------------------------------------------

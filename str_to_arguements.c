@@ -49,6 +49,15 @@ char **str_to_arguments(char *buffer, char sep)
 	}
 	return (out);
 }
+
+/**
+ *mystrcat - concatenate two strings
+ *@a: string source
+ *@b: string detination
+ *
+ *Return: modified strind dest
+ */
+
 char *mystrcat(char *a, char *b)
 {
 	char *p, *q, *rtn;
@@ -65,6 +74,16 @@ char *mystrcat(char *a, char *b)
 	}
 	return (rtn);
 }
+
+/**
+ *get_env - function that set the environ
+ *@str: string pasing routes
+ *
+ *Return: always 0
+ *
+ */
+
+
 char *get_env(char *str)
 {
 	int i, a, differ;
@@ -109,6 +128,17 @@ void set_col(int c)
 		break;
 	}
 }
+
+/**
+ *mystrcpy - function copies the string pointed to by src
+ *@dest:to the buffer pointed to by dest
+ *@src: length of src
+ *@offs: total of n bytes are written
+ *
+ *Return: a pointer to the destination string dest
+ */
+
+
 int mystrcpy(char **dest, const char *src, int offs)
 {
 	int i;

@@ -127,7 +127,6 @@ int search_command(char **arguments, char **env)
  *
  *Return: if file exists 1, if not 0
  */
-
 int search_file(char **arguments, char **env)
 {
 	int file;

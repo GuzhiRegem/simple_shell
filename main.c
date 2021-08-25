@@ -110,7 +110,7 @@ int command(char **arguments, char **env, char *errormsg)
 		return (1);
 	i = search_bulit_in(arguments, env, errormsg);
 	if (i != 0)
-		return (i);
+		return ((i == -1) ? 0 : i);
 	i = search_command(arguments, env);
 	if (i != 0)
 		return (i);
@@ -118,7 +118,7 @@ int command(char **arguments, char **env, char *errormsg)
 	if (i != 0)
 		return (i);
 	out = mystrcpy(errormsg, arguments[0], 0);
-	out += mystrcpy(errormsg, ": not found", out);
+	out += mystrcpy(errormsg, ": no such file or directory", out);
 	return (2);
 }
 /**

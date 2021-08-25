@@ -2,9 +2,12 @@
 
 /**
  *execute - execute the command
+ *@command: array of stings.
+ *@arguments: parsed string
+ *@env: environment variable
  *
+ *Return: nothing
  */
-
 void execute(char *command, char **arguments, char **env)
 {
 	int pid, exit_status;
@@ -18,6 +21,15 @@ void execute(char *command, char **arguments, char **env)
 	else
 		wait(&exit_status);
 }
+/**
+ *execute_built_in - function will execute and works if biultin
+ *@n: integer representing size
+ *@arguments: tokenized commands
+ *@env: NULL terminated array of strings
+ *@errormsg: wrong, will display error
+ *
+ *Return: integer
+ */
 int execute_built_in(int n, char **arguments,
 		     __attribute__ ((unused))char **env, char *errormsg)
 {
@@ -40,6 +52,14 @@ int execute_built_in(int n, char **arguments,
 	}
 	return (1);
 }
+/**
+ *search_bulit_in - function checking 4 bultins
+ *@arguments: tokenized commands
+ *@env: NULL terminated array of strings
+ *@errormsg:  will display an error message
+ *
+ *Return: 0
+ */
 int search_bulit_in(char **arguments, char **env, char *errormsg)
 {
 	int i;
@@ -55,6 +75,13 @@ int search_bulit_in(char **arguments, char **env, char *errormsg)
 		}
 	return (0);
 }
+/**
+ *search_command - function that look up for a command
+ *@arguments: tokenized commands
+ *@env: NULL terminated array of strings
+ *
+ *Return: integer founded, if fails 0
+ */
 int search_command(char **arguments, char **env)
 {
 	char *path, *command;
@@ -85,6 +112,13 @@ int search_command(char **arguments, char **env)
 	free(paths);
 	return (found);
 }
+/**
+ *search_file - function that looks for a file
+ *@arguments: tokenized commands
+ *@env: NULL terminated array of strings
+ *
+ *Return: if file exists 1, if not 0
+ */
 int search_file(char **arguments, char **env)
 {
 	int file;

@@ -38,6 +38,12 @@ int main(__attribute__ ((unused)) int argc, char **argv)
 	free(errormsg);
 	return (0);
 }
+/**
+ *get_inp - function that get the input
+ *@errormsg: will display an error message
+ *
+ *Return: a number, the error number
+ */
 int get_inp(char *errormsg)
 {
 	char *buffer;
@@ -88,6 +94,14 @@ int get_inp(char *errormsg)
 	free(times);
 	return (inte ? error : (0 - error));
 }
+/**
+ *command - funtion to parse the input string
+ *@arguments: tokenized commands
+ *@env: NULL terminated array of strings.
+ *@errormsg:  will display an error message
+ *
+ *Return: always an integer
+ */
 int command(char **arguments, char **env, char *errormsg)
 {
 	int i, out;
@@ -107,6 +121,12 @@ int command(char **arguments, char **env, char *errormsg)
 	out += mystrcpy(errormsg, ": not found", out);
 	return (2);
 }
+/**
+ *prompt - function that will print the prompt
+ *@n: defines interactive mode
+ *
+ *Return: nothing
+ */
 void prompt(int n)
 {
 	char cwd[201];

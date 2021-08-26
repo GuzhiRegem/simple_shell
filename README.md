@@ -36,7 +36,8 @@ s will run simultaneosly with differents ID numbers.
 To complete the excecution we use wait() until the child is over. so the propmt
 will show up again, with the main loop of our shell still running.
 i.e.
-void execute(char *command, char **arguments, char **env)      \
+\
+void execute(char *command, char **arguments, char **env)
  {
         int pid, exit_status;
 

@@ -13,7 +13,7 @@ char **str_to_lines(char *buffer, char sep)
 
 	for (i = 0; buffer[i]; i++)
 		if (buffer[i] == sep)
-		        arg_amount++;
+			arg_amount++;
 	out = malloc((arg_amount + 1) * sizeof(char *));
 	if (!out)
 		return (out);

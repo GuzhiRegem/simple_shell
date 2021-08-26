@@ -72,7 +72,7 @@ int get_inp(char *errormsg)
 		free(buffer);
 		return (1);
 	}
-	times = str_to_arguments(buffer, '\n');
+	times = str_to_lines(buffer);
 	free(buffer);
 	for (lines = 0; times[lines]; lines++)
 	{

@@ -1,5 +1,4 @@
 #include "shell.h"
-
 /**
  *str_to_arguments - makes an array of strings from a string
  *@buffer: string to separate

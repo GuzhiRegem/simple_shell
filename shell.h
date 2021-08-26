@@ -17,6 +17,7 @@ int mygetline(char **buffer, size_t *buf_size);
 void set_col(int c);
 char *get_env(char *str);
 char **str_to_arguments(char *buffer, char sep);
+char **str_to_lines(char *buffer);
 int search_bulit_in(char **arguments, char **env, char *errormsg);
 int search_command(char **arguments, char **env);
 int search_file(char **arguments, char **env);

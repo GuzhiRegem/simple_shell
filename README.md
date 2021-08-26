@@ -9,16 +9,13 @@ Everything you need to know to start coding your own shell
 
 
 
-Our shell is gonna be a huge loop where a prompt will be printed depending de mo
-de, if interactive or non interactive, and is going to
-get some input from the user and the is gonna parse it and try to do something w
-ith it.
+Our shell is gonna be a huge loop where a prompt will be printed depending on the mode, 
+if interactive or non interactive, the program is going to get some input from the user and 
+parse it to try to do something with it.
 
-Input will be taken using the function getline() and will be tokanized with the
-function str_to args. If it is builtin, that we createad our selves for exapmle
-cd command.
-simple_shell will do a similar job with the enviroment variable PATH= concatenat
-ing the parsed enviroment.
+Input will be taken using the function getline() and will be tokenized with the
+function str_to_args.
+simple_shell will do a similar job with the enviroment variable "PATH", parsing it by the character ':'.
 
 It will start in interactive mode to print the promt and wait for the user to en
 ter some input and our program will parse the string into tokens and will return

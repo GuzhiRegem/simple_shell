@@ -2,14 +2,14 @@
 /**
  *str_to_lines - makes an array of strings from a string
  *@buffer: string to separate
+ *@sep: separator
  *Return: array of strings
  */
-char **str_to_lines(char *buffer)
+char **str_to_lines(char *buffer, char sep)
 {
 	char **out;
 	int i, i2, i3, error = 0, arg_amount = 1;
 	char *ptr, *tmp;
-	char sep = '\n';
 
 	for (i = 0; buffer[i]; i++)
 		if (buffer[i] == sep)

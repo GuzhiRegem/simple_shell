@@ -90,7 +90,7 @@ int search_command(char **arguments, char **env)
 	int i, found = 0, file;
 
 	path = get_env("PATH");
-	paths = str_to_arguments(path, ':');
+	paths = str_to_lines(path, ':');
 	if (!paths)
 		return (0);
 	for (i = 0; paths[i] && !found; i++)
